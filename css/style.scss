@@ -1,0 +1,445 @@
+@import "_null";
+@import "_mixins";
+@import url(https://fonts.googleapis.com/css?family=Roboto:700&display=swap);
+@font-face {
+	font-family: "Helvetica Neue";
+	src:
+		url("../fonts/HelveticaNeue-CondensedBlack.woff2") format("woff2"),
+		url("../fonts/HelveticaNeue-CondensedBlack.woff") format("woff");
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Helvetica Neue";
+	src:
+		url("../fonts/HelveticaNeue-CondensedBold.woff2") format("woff2"),
+		url("../fonts/HelveticaNeue-CondensedBold.woff") format("woff");
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Helvetica Neue";
+	src:
+		url("../fonts/HelveticaNeue-Roman.woff2") format("woff2"),
+		url("../fonts/HelveticaNeue-Roman.woff") format("woff");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+// ==============COLOR VARIABLES===========
+$black: #1a1a1a;
+$black1: #000000;
+$grey1: #252525;
+$grey2: #b3b3b3;
+$grey3: #d8d8d8;
+$green: #34c759;
+$white: #ffffff;
+
+// ==============MEDIA VARIABLES===========
+$width: 401px;
+// ==============TEMPLATES=================
+
+// ========================================
+body {
+	font-family: "Helvetica Neue", sans-serif;
+	line-height: 1.87;
+	background: $black;
+}
+[class*="__container"] {
+	max-width: 1140px;
+	margin: 0 auto;
+	padding: 0px 15px;
+}
+.main {
+	&__container {
+		padding-top: 50px;
+	}
+}
+.recipes {
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0px -15px;
+	}
+
+	&__row-item {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		flex: 0 1 50%;
+
+		padding: 0px 15px;
+		gap: 30px;
+	}
+	&__breakfast-link {
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+	}
+	&__breakfast {
+		display: flex;
+		flex-direction: column;
+		padding: 60px 65px;
+		position: relative;
+		height: 100%;
+	}
+
+	&__breakfast-image {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(180deg, rgba(38, 38, 38, 0), rgba(38, 38, 38, 0.5) 100%);
+			z-index: 1;
+		}
+	}
+	&__breakfast-photo {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 6px;
+	}
+
+	&__breakfast-frame {
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		position: relative;
+		z-index: 2;
+	}
+
+	&__breakfast-content {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		justify-content: space-around;
+		&:not(:last-child) {
+			margin-bottom: 65px;
+		}
+		> p {
+			flex: 1 1 auto;
+			&:not(:last-child) {
+				margin-bottom: 45px;
+			}
+			color: #fff;
+			text-align: center;
+			font-size: 24px;
+			line-height: 1.67;
+			max-width: 411px;
+			text-align: center;
+			margin: 0 auto;
+		}
+	}
+
+	&__breakfast-title {
+		align-self: center;
+		&:not(:last-child) {
+			margin-bottom: 65px;
+		}
+	}
+	&__breakfast-chef {
+		flex: 1 1 auto;
+	}
+	&__breakfast-chef,
+	&__breakfast-date {
+		color: #fff;
+		font-size: 14px;
+		line-height: 2.14;
+	}
+	&__breakfast-date {
+		flex: 1 1 auto;
+		&:not(:last-child) {
+			margin-bottom: 25px;
+		}
+	}
+
+	&__breakfast-footer {
+		justify-content: center;
+	}
+
+	&__breakfast-button {
+		cursor: pointer;
+		position: absolute;
+		top: 30px;
+		right: 30px;
+		width: 40px;
+		height: 40px;
+		&:hover {
+			width: 41px;
+			height: 41px;
+		}
+
+		&::before {
+			content: "";
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			background-color: rgba(0, 0, 0, 0.3);
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 2;
+		}
+		&::after {
+			content: "";
+			display: inline-block;
+			background: url("../img/Icon.svg") 0 0/100% no-repeat;
+			width: 12.8px;
+			height: 12.8px;
+			position: absolute;
+			top: 13.6px;
+			left: 13.6px;
+			z-index: 2;
+		}
+	}
+
+	&__lunch {
+		border-radius: 6px;
+		background: #252525;
+		box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+
+	&__dinner {
+		position: relative;
+	}
+
+	.recipes-card {
+		display: flex;
+
+		flex: 1 1 auto;
+		padding: 30px 20px 25px 30px;
+		border-radius: 6px;
+		@media (max-width: $width) {
+			padding: 15px 10px;
+		}
+		&__frame {
+			display: flex;
+			flex-direction: column;
+			flex: 1 1 auto;
+
+			> p {
+				flex: 1 1 auto;
+				color: #fff;
+				line-height: 1.87;
+				&:not(:last-child) {
+					margin-bottom: 10px;
+				}
+				@include brp(mobile) {
+					font-size: 14px;
+				}
+			}
+			&_color {
+				> p {
+					color: #252525;
+				}
+			}
+		}
+		&__image {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			&::before {
+				border-radius: 6px;
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+				z-index: 2;
+			}
+		}
+
+		&__photo {
+			border-radius: 6px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
+	&__date_color {
+		color: #fff;
+		font-size: 12px;
+		line-height: 2.08;
+	}
+	&__date_color-black {
+		color: #1a1a1a;
+		font-size: 12px;
+		line-height: 2.08;
+	}
+
+	&__sweets {
+		background-color: #34c759;
+	}
+}
+.recipes-card {
+	&__footer {
+		flex: 1 1 auto;
+		display: flex;
+		gap: 10px;
+		align-items: center;
+	}
+
+	&__title-date {
+		display: flex;
+		flex: 1 1 auto;
+		gap: 15px;
+		@media (max-width: $width) {
+			gap: 8px;
+		}
+	}
+
+	&__title {
+		height: 25px;
+		&_color {
+			display: inline-block;
+			color: $white;
+			text-align: center;
+			font-size: 10px;
+			font-weight: 900;
+			line-height: 2.5;
+			letter-spacing: 1.25px;
+			text-transform: uppercase;
+			min-width: 90px;
+			padding: 0px 15px;
+			border-radius: 3px;
+			background-color: rgba(0, 0, 0, 1);
+		}
+	}
+
+	&__date {
+		flex: 0 1 auto;
+		height: 25px;
+		color: #b3b3b3;
+		font-size: 12px;
+		line-height: 2.08;
+		&_color {
+			color: #fff;
+			font-size: 12px;
+			line-height: 2.08;
+		}
+		&_color-black {
+			color: #1a1a1a;
+			font-size: 12px;
+			line-height: 2.08;
+		}
+	}
+}
+
+.meal-title {
+	display: inline-block;
+	color: $white;
+	text-align: center;
+	font-size: 10px;
+	font-weight: 900;
+	line-height: 2.5;
+	letter-spacing: 1.25px;
+	text-transform: uppercase;
+	min-width: 90px;
+	padding: 0px 15px;
+	background-color: rgb(0, 0, 0, 0.3);
+	border-radius: 3px;
+}
+.customer {
+	display: flex;
+	gap: 32px;
+	@media (max-width: $width) {
+		gap: 7px;
+	}
+
+	&__visibility {
+		background: url("../img/eye.svg") 0 7px / 22px 15px no-repeat;
+		color: #fff;
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 2.5;
+		padding-left: 36px;
+		min-height: 22px;
+		// text-align: left;
+		@media (max-width: $width) {
+			padding-left: 27px;
+		}
+		&_color {
+			background: url("../img/eye_black.svg") 0 7px/22px 15px no-repeat;
+			color: #1a1a1a;
+			font-family: Roboto;
+			font-size: 12px;
+			font-style: normal;
+			font-weight: 700;
+			line-height: 2.5;
+		}
+	}
+
+	&__comments {
+		background: url("../img/question_answer.svg") 0px 5px / 20px 20px no-repeat;
+		color: #fff;
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 2.5;
+		padding-left: 35px;
+		min-height: 22px;
+		@media (max-width: $width) {
+			padding-left: 27px;
+		}
+		&_color {
+			background: url("../img/question_answer_black.svg") 0 5px/20px 20px no-repeat;
+			color: var(--Black, #1a1a1a);
+			font-family: Roboto;
+			font-size: 12px;
+			font-weight: 700;
+			line-height: 30px;
+		}
+	}
+}
+.recipes {
+	&__card-link {
+		display: flex;
+		flex: 1 1 auto;
+	}
+}
+
+.recipes-card {
+	&:hover {
+		background-color: #21c70e;
+	}
+}
+@include brp(tablet) {
+	.recipes__row {
+		gap: 20px;
+		justify-content: center;
+	}
+	.recipes__row-item {
+		flex: 0 1 75%;
+	}
+}
+
+@include brp(mobile) {
+	.recipes__row-item {
+		flex: 0 1 100%;
+	}
+}
